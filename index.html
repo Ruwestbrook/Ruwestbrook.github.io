@@ -232,134 +232,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/16/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="洪凌祺russ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/16/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-16T11:41:32+08:00">
-                2018-08-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/15/nginx服务器搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -431,7 +303,41 @@
       
         
           
-            
+            <p>闲来无事想写一个博客,因为自己有了 <a href="www.honglingqi.cn">域名</a> ,但是想着写博客的话怎么也得用<a href="blog.honglingqi.cn">博客</a>这个blog二级域名吧,博客也应该用hexo来写比较好,那怎么分配这个二级域名呢,查了半天发现nginx可以很好的实现,那还用什么apache啊,赶紧的nginx装起来,但是这个真的是个大坑……</p>
+<p>首先安装nignx<br><code>sudo apt-get install nginx</code><br>能在站点上看到如下信息</p>
+<p><img src="http://image.honglingqi.cn/blogImages/web.png" alt="安装成功"></p>
+<p> 接着安装php </p>
+<p><code>sudo apt-get install php7.0</code></p>
+<p>  输入 <code>php -v</code> 出现版本信息就代表安装成功了</p>
+<p>  为什么是7.0的版本的  因为在nginx的配置文件里php的版本就是7.0的版本,为了方便</p>
+<p>  但是在站点下新建php文件,然后访问 你会发现它会把文件下载下来,这是因为nginx不能编译php文件,必须安装对应的插件</p>
+<p>  php低版本貌似要自己安装  7.0的版本好像自己有了 可能镜像不同会有差异 最好还是安装下一</p>
+<p>  <code>sudo apt-get install php7.0-fpm</code></p>
+<p>  不确定这个是否是真的需要,我也没验证</p>
+<p>  <code>sudo apt-get install php7.0-cgi</code></p>
+<p>   然后启动php服务</p>
+<p>   <code>service php7.0-fpm start</code></p>
+<p>   接着修改nginx的配置文件 </p>
+<p>   <code>sudo nano /etc/nginx/sites-available/default</code></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#location ~ \.php$ &#123;</span><br><span class="line">        </span><br><span class="line">        #       include snippets/fastcgi-php.conf;</span><br><span class="line">        #</span><br><span class="line">        #       # With php7.0-cgi alone:</span><br><span class="line">        #       fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        #       # With php7.0-fpm:</span><br><span class="line">        #       fastcgi_pass unix:/run/php/php7.0-fpm.sock;</span><br><span class="line">        #&#125;</span><br></pre></td></tr></table></figure>
+<p>  替换成</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">                include snippets/fastcgi-php.conf;</span><br><span class="line">         </span><br><span class="line">         </span><br><span class="line">                # With php7.0-cgi alone:</span><br><span class="line">         #       fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">                # With php7.0-fpm:</span><br><span class="line">                fastcgi_pass unix:/run/php/php7.0-fpm.sock;</span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure>
+<p>然后重启nginx</p>
+<p><code>sudo service nginx restart</code></p>
+<p>至此php也可以解析了,然后就是配置二级域名了</p>
+<p>安装 node</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line">sudo apt-get install nodejs</span><br><span class="line"></span><br><span class="line">sudo apt-get install nodejs-legacy</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line"></span><br><span class="line">http.createServer(function (request, response) &#123;</span><br><span class="line"></span><br><span class="line">    response.writeHead(200, &#123;&apos;Content-Type&apos;: &apos;text/plain&apos;&#125;);</span><br><span class="line">    </span><br><span class="line">    response.end(&apos;Hello World\n&apos;);</span><br><span class="line">    </span><br><span class="line">&#125;).listen(8888);</span><br><span class="line"></span><br><span class="line">console.log(&apos;Server running at http://127.0.0.1:8888/&apos;);</span><br></pre></td></tr></table></figure>
+<p>然后访问8888端口,自然会出现Hello World</p>
+<p>接下去就是要配置二级域名了,还是打开nginx的配置文件,拉到最后,加入如下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">            listen 80;</span><br><span class="line">            server_name blog.honglingqi.cn;</span><br><span class="line">            location / &#123;</span><br><span class="line">                 proxy_pass http://127.0.0.1:8888;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure>
+<p>保存退出,然后重启就可以访问了</p>
+<p>最后说一下php的CI框架,放在网站目录后你会发现无法访问,之前在apache上是使用rewrite模块和.hatccess文件重写路径访问<br>百度了下只要在配置文件中加入这个文件的路径就好了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include (路径).hatccess;</span><br></pre></td></tr></table></figure>
+<p>但是我自己试了一下发现一只报错,然后用了一个方法完美解决:<br>就是在一级域名的server下面添加如下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /(CI框架的名字)&#123;</span><br><span class="line">               try_files $uri $uri/ /(CI框架的名字)/index.php?$args;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<p>我看了下之前的配置文件 然后照着写了一个,发现真的可以用,那也挺好的</p>
+<p>总的来说nginx的配置真的比较简单,而且建站也比较方便,强烈推荐使用</p>
+
           
         
       
@@ -512,7 +418,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -520,6 +426,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
             
 
           </nav>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="服务器 nginx," />
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="洪凌祺的博客">
+<meta name="description" content="闲来无事想写一个博客,因为自己有了 域名 ,但是想着写博客的话怎么也得用博客这个blog二级域名吧,博客也应该用hexo来写比较好,那怎么分配这个二级域名呢,查了半天发现nginx可以很好的实现,那还用什么apache啊,赶紧的nginx装起来,但是这个真的是个大坑…… 首先安装nignxsudo apt-get install nginx能在站点上看到如下信息   接着安装php  sudo a">
+<meta name="keywords" content="服务器 nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx服务器搭建">
 <meta property="og:url" content="http://yoursite.com/2018/08/15/nginx服务器搭建/index.html">
 <meta property="og:site_name" content="blog">
-<meta property="og:description" content="洪凌祺的博客">
+<meta property="og:description" content="闲来无事想写一个博客,因为自己有了 域名 ,但是想着写博客的话怎么也得用博客这个blog二级域名吧,博客也应该用hexo来写比较好,那怎么分配这个二级域名呢,查了半天发现nginx可以很好的实现,那还用什么apache啊,赶紧的nginx装起来,但是这个真的是个大坑…… 首先安装nignxsudo apt-get install nginx能在站点上看到如下信息   接着安装php  sudo a">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-16T06:24:26.125Z">
+<meta property="og:image" content="http://image.honglingqi.cn/blogImages/web.png">
+<meta property="og:updated_time" content="2018-08-16T16:27:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx服务器搭建">
-<meta name="twitter:description" content="洪凌祺的博客">
+<meta name="twitter:description" content="闲来无事想写一个博客,因为自己有了 域名 ,但是想着写博客的话怎么也得用博客这个blog二级域名吧,博客也应该用hexo来写比较好,那怎么分配这个二级域名呢,查了半天发现nginx可以很好的实现,那还用什么apache啊,赶紧的nginx装起来,但是这个真的是个大坑…… 首先安装nignxsudo apt-get install nginx能在站点上看到如下信息   接着安装php  sudo a">
+<meta name="twitter:image" content="http://image.honglingqi.cn/blogImages/web.png">
 
 
 
@@ -261,7 +264,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-15T22:24:26+00:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-16T06:24:26+08:00">
                 2018-08-16
               </time>
             
@@ -299,7 +302,41 @@
       
 
       
-        
+        <p>闲来无事想写一个博客,因为自己有了 <a href="www.honglingqi.cn">域名</a> ,但是想着写博客的话怎么也得用<a href="blog.honglingqi.cn">博客</a>这个blog二级域名吧,博客也应该用hexo来写比较好,那怎么分配这个二级域名呢,查了半天发现nginx可以很好的实现,那还用什么apache啊,赶紧的nginx装起来,但是这个真的是个大坑……</p>
+<p>首先安装nignx<br><code>sudo apt-get install nginx</code><br>能在站点上看到如下信息</p>
+<p><img src="http://image.honglingqi.cn/blogImages/web.png" alt="安装成功"></p>
+<p> 接着安装php </p>
+<p><code>sudo apt-get install php7.0</code></p>
+<p>  输入 <code>php -v</code> 出现版本信息就代表安装成功了</p>
+<p>  为什么是7.0的版本的  因为在nginx的配置文件里php的版本就是7.0的版本,为了方便</p>
+<p>  但是在站点下新建php文件,然后访问 你会发现它会把文件下载下来,这是因为nginx不能编译php文件,必须安装对应的插件</p>
+<p>  php低版本貌似要自己安装  7.0的版本好像自己有了 可能镜像不同会有差异 最好还是安装下一</p>
+<p>  <code>sudo apt-get install php7.0-fpm</code></p>
+<p>  不确定这个是否是真的需要,我也没验证</p>
+<p>  <code>sudo apt-get install php7.0-cgi</code></p>
+<p>   然后启动php服务</p>
+<p>   <code>service php7.0-fpm start</code></p>
+<p>   接着修改nginx的配置文件 </p>
+<p>   <code>sudo nano /etc/nginx/sites-available/default</code></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#location ~ \.php$ &#123;</span><br><span class="line">        </span><br><span class="line">        #       include snippets/fastcgi-php.conf;</span><br><span class="line">        #</span><br><span class="line">        #       # With php7.0-cgi alone:</span><br><span class="line">        #       fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        #       # With php7.0-fpm:</span><br><span class="line">        #       fastcgi_pass unix:/run/php/php7.0-fpm.sock;</span><br><span class="line">        #&#125;</span><br></pre></td></tr></table></figure>
+<p>  替换成</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">                include snippets/fastcgi-php.conf;</span><br><span class="line">         </span><br><span class="line">         </span><br><span class="line">                # With php7.0-cgi alone:</span><br><span class="line">         #       fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">                # With php7.0-fpm:</span><br><span class="line">                fastcgi_pass unix:/run/php/php7.0-fpm.sock;</span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure>
+<p>然后重启nginx</p>
+<p><code>sudo service nginx restart</code></p>
+<p>至此php也可以解析了,然后就是配置二级域名了</p>
+<p>安装 node</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line">sudo apt-get install nodejs</span><br><span class="line"></span><br><span class="line">sudo apt-get install nodejs-legacy</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line"></span><br><span class="line">http.createServer(function (request, response) &#123;</span><br><span class="line"></span><br><span class="line">    response.writeHead(200, &#123;&apos;Content-Type&apos;: &apos;text/plain&apos;&#125;);</span><br><span class="line">    </span><br><span class="line">    response.end(&apos;Hello World\n&apos;);</span><br><span class="line">    </span><br><span class="line">&#125;).listen(8888);</span><br><span class="line"></span><br><span class="line">console.log(&apos;Server running at http://127.0.0.1:8888/&apos;);</span><br></pre></td></tr></table></figure>
+<p>然后访问8888端口,自然会出现Hello World</p>
+<p>接下去就是要配置二级域名了,还是打开nginx的配置文件,拉到最后,加入如下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">            listen 80;</span><br><span class="line">            server_name blog.honglingqi.cn;</span><br><span class="line">            location / &#123;</span><br><span class="line">                 proxy_pass http://127.0.0.1:8888;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure>
+<p>保存退出,然后重启就可以访问了</p>
+<p>最后说一下php的CI框架,放在网站目录后你会发现无法访问,之前在apache上是使用rewrite模块和.hatccess文件重写路径访问<br>百度了下只要在配置文件中加入这个文件的路径就好了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include (路径).hatccess;</span><br></pre></td></tr></table></figure>
+<p>但是我自己试了一下发现一只报错,然后用了一个方法完美解决:<br>就是在一级域名的server下面添加如下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /(CI框架的名字)&#123;</span><br><span class="line">               try_files $uri $uri/ /(CI框架的名字)/index.php?$args;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<p>我看了下之前的配置文件 然后照着写了一个,发现真的可以用,那也挺好的</p>
+<p>总的来说nginx的配置真的比较简单,而且建站也比较方便,强烈推荐使用</p>
+
       
     </div>
     
@@ -314,27 +351,17 @@
 
     <footer class="post-footer">
       
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/16/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
+        <div class="post-tags">
+          
+            <a href="/tags/服务器-nginx/" rel="tag"># 服务器 nginx</a>
+          
         </div>
+      
+
+      
+      
+      
+
       
 
       
@@ -399,7 +426,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -407,6 +434,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
             
 
           </nav>
